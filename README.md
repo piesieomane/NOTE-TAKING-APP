@@ -4,7 +4,7 @@ Note-Taking App
 
 # Description the project.
 
-This is a simple CRUD app that allows users to create, read, update and delete users. The app is built with React, Node, Express and Postgresql.
+This is a simple CRUD app that allows users to create, read, update and delete notes. The app is built with React, Node, Express and MySql.
 
 ## Built With
 
