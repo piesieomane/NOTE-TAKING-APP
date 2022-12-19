@@ -1,5 +1,6 @@
 'use strict';
 import { Model } from 'sequelize';
+import { UUIDV4 } from 'sequelize';
 
 interface UserAttributes {
   id: string;

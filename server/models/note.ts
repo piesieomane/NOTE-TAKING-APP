@@ -22,6 +22,9 @@ module.exports = (sequelize: any, DataTypes: any) => {
 
     static associate(models: any) {
       // define association here
+      Note.belongsToMany(models.User, {
+        through: 'UserNote',
+      });
     }
   }
   Note.init(

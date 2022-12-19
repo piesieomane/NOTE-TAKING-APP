@@ -14,3 +14,6 @@ db.sequelize.sync().then(() => {
 //add midlleWares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+//add routes
+app.use('/api/notes', noteRouter);
