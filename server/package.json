@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "tsc --init",
-    "dev": "tsc-node-dev"
+    "dev": "tsnd --respawn app.ts"
   },
   "devDependencies": {
     "@types/express": "^4.17.15",
