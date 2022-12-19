@@ -1,4 +1,5 @@
-const express = require('express');
+import express from 'express';
+import noteRouter from './routes/note';
 
 const app = express();
 

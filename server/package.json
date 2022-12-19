@@ -12,8 +12,10 @@
     "ts-node": "^10.9.1"
   },
   "dependencies": {
+    "@types/sequelize": "^4.28.14",
     "body-parser": "^1.20.1",
     "express": "^4.18.2",
+    "sequelize": "^6.27.0",
     "typescript": "^4.9.4"
   },
   "keywords": [],
