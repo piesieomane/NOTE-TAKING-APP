@@ -1,5 +1,6 @@
 import express from 'express';
 import noteRouter from './routes/note';
+import userRouter from './routes/user';
 import db from './models';
 
 const app = express();
@@ -17,3 +18,4 @@ app.use(express.urlencoded({ extended: true }));
 
 //add routes
 app.use('/api/notes', noteRouter);
+app.use('/api/users', userRouter);
