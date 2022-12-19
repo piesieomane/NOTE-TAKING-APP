@@ -31,7 +31,7 @@ export const createNote = async (req: any, res: any) => {
 export const updateNote = async (req: any, res: any) => {
   const { id } = req.params;
   const { title, content } = req.body;
-  const note = await Note.findByPk(id);
+  const note = (await Note.findByPk(id))?.toJSON();
   if (note) {
     note.title = title;
     note.content = content;

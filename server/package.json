@@ -11,6 +11,7 @@
     "@types/express": "^4.17.15",
     "@types/node": "^18.11.17",
     "nodemon": "^2.0.20",
+    "sequelize-cli": "^6.5.2",
     "ts-node": "^10.9.1"
   },
   "dependencies": {
