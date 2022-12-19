@@ -1,6 +1,6 @@
 # Project Name
 
-Crud App
+Note-Taking App
 
 # Description the project.
 
