@@ -1,20 +1,9 @@
 import express from 'express';
 import noteRouter from './routes/note';
-import db from './database';
-
-const connectDb = () => {
-  db.authenticate()
-    .then(() => {
-      console.log('Connection has been established successfully.');
-    })
-    .catch((err) => {
-      console.error('Unable to connect to the database:', err);
-    });
-};
-
-connectDb();
+import db from './models';
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 //add midlleWares
 app.use(express.json());
