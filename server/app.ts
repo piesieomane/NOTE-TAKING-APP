@@ -16,4 +16,10 @@ connectDb();
 
 const app = express();
 
+//add midlleWares
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use('/api/notes', noteRouter);
+
 app.listen(3000);
