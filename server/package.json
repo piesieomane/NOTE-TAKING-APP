@@ -7,7 +7,8 @@
     "test": "tsc --init",
     "dev": "tsnd --respawn app.ts",
     "db:migrate": "sequelize-cli db:migrate",
-    "db:migrate:undo": "sequelize-cli db:migrate:undo"
+    "db:migrate:undo": "sequelize-cli db:migrate:undo",
+    "db:migrate:undo:all": "sequelize-cli db:migrate:undo:all"
   },
   "devDependencies": {
     "@types/express": "^4.17.15",

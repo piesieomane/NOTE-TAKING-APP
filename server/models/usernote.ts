@@ -4,7 +4,7 @@ const { Model, UUID } = require('sequelize');
 
 interface UserNoteAttributes {
   NoteId: number;
-  UserId: String;
+  UserId: number;
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
@@ -17,29 +17,33 @@ module.exports = (sequelize: any, DataTypes: any) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    public NoteId!: number;
-    public UserId!: String;
     static associate(models: any) {
       // define association here
     }
   }
   UserNote.init(
     {
-      NoteId: {
-        type: DataTypes.NUMBER,
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER,
+      },
+      noteId: {
+        type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
         references: {
-          model: 'Notes',
+          model: 'Note',
           key: 'id',
         },
       },
-      UserId: {
-        type: DataTypes.UUID,
+      userId: {
+        type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
         references: {
-          model: 'Users',
+          model: 'User',
           key: 'id',
         },
       },
