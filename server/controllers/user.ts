@@ -2,11 +2,9 @@ import db from '../models';
 
 //create a User
 export const createUser = async (req: any, res: any) => {
-  const { name, email, password } = req.body;
+  const { name } = req.body;
   const user = await db.User.create({
     name,
-    password,
-    email,
   });
   res.json(user);
 };
@@ -31,12 +29,10 @@ export const getUser = async (req: any, res: any) => {
 //update a User by id
 export const updateUser = async (req: any, res: any) => {
   const { id } = req.params;
-  const { name, email, password } = req.body;
-  const user = (await db.User.findByPk(id))?.toJSON();
+  const { name } = req.body;
+  const user = await db.User.findOne({ where: { id: id } });
   if (user) {
     user.name = name;
-    user.email = email;
-    user.password = password;
     await user.save();
     res.json(user);
   } else {
