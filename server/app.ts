@@ -1,7 +1,7 @@
 import express from 'express';
 import noteRouter from './routes/note';
 import userRouter from './routes/user';
-import db from './models';
+import db from './database/models';
 
 const app = express();
 const PORT = process.env.PORT || 3000;

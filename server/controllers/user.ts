@@ -1,4 +1,4 @@
-import db from '../models';
+import db from '../database/models';
 
 //create a User
 export const createUser = async (req: any, res: any) => {

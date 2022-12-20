@@ -1,4 +1,4 @@
-import db from '../models';
+import db from '../database/models';
 
 //Users can see a list of all notes created on the application
 export const getNotes = async (req: any, res: any) => {
