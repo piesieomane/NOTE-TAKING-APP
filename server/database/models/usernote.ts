@@ -1,6 +1,6 @@
 'use strict';
 
-const { Model, UUID } = require('sequelize');
+const { Model } = require('sequelize');
 
 interface UserNoteAttributes {
   NoteId: number;
