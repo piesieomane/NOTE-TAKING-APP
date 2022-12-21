@@ -1,12 +1,17 @@
-import Welcome from './components/Welcome';
-import Navbar from './components/Navbar';
+import React from 'react';
 import '../src/css/main.css';
+import { Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+
+import Welcome from './components/Welcome';
 
 const App = () => {
   return (
     <div className="App">
       <Navbar />
-      <Welcome />
+      <Routes>
+        <Route path="/" element={<Welcome />} />
+      </Routes>
     </div>
   );
 };
