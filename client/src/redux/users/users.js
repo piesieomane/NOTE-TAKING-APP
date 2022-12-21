@@ -29,3 +29,10 @@ export const fetchUSERS = createAsyncThunk(GET_USERS, async () => {
     users: res.data,
   };
 });
+
+export const addUSER = createAsyncThunk(ADD_USER, async (user) => {
+  const res = await axios.post('http://localhost:3000/api/users/', user);
+  return {
+    users: res.data,
+  };
+});
