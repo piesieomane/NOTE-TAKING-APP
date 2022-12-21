@@ -1,9 +1,12 @@
 import express from 'express';
+import cors from 'cors';
 import noteRouter from './routes/note';
 import userRouter from './routes/user';
 import db from './database/models';
 
 const app = express();
+//allow CORS
+app.use(cors());
 const PORT = process.env.PORT || 3000;
 
 const connectDB = async () => {
@@ -23,17 +26,6 @@ app.use(express.urlencoded({ extended: true }));
 //add routes
 app.use('/api/notes', noteRouter);
 app.use('/api/users', userRouter);
-
-//allow CORS
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', '*');
-  if (req.method === 'OPTIONS') {
-    res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
-    return res.status(200).json({});
-  }
-  next();
-});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
