@@ -1,6 +1,15 @@
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+
 import './WelcomeStyles.css';
 
 const Welcome = () => {
+  const notes = useSelector((state) => state.notes);
+
+  const handleClick = () => {
+    console.log(notes);
+  };
   return (
     <>
       <div className="home">

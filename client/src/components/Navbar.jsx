@@ -22,7 +22,7 @@ const Navbar = () => {
       </div>
       <ul
         className={isActive ? 'nav-menu active' : 'nav-menu'}
-        onclick={toggleClass}
+        onClick={toggleClass}
       >
         {LINKS.map((link, index) => (
           <li key={index}>
