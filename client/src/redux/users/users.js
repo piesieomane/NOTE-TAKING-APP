@@ -36,3 +36,10 @@ export const addUSER = createAsyncThunk(ADD_USER, async (user) => {
     users: res.data,
   };
 });
+
+export const deleteUSER = createAsyncThunk(DELETE_USER, async (id) => {
+  await axios.delete(`http://localhost:3000/api/users/${id}`);
+  return {
+    id,
+  };
+});
