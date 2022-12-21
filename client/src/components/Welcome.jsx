@@ -1,4 +1,5 @@
 import Sammy from '../img/sammy.jpeg';
+import '../css/main.css';
 
 const Welcome = () => {
   return (
