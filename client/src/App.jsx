@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 
 import Welcome from './components/Welcome';
+import Notes from './components/Notes';
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Welcome />} />
+        <Route path="/notes" element={<Notes />} />
       </Routes>
     </div>
   );

@@ -31,7 +31,11 @@ export const fetchNOTES = createAsyncThunk(GET_NOTES, async () => {
 });
 
 export const addNOTE = createAsyncThunk(ADD_NOTE, async (note) => {
-  const res = await axios.post('http://localhost:3000/api/notes/', note);
+  const res = await axios.post('http://localhost:3000/api/notes/', note, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
   return {
     notes: res.data,
   };

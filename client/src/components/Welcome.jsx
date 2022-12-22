@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { addUSER } from '../redux/users/users';
 
 import './WelcomeStyles.css';
 
@@ -10,15 +10,17 @@ const Welcome = () => {
   const [formStates, setFormStates] = useState({ name: '' });
 
   const changeState = (e) => {
+    e.preventDefault();
     setFormStates({ ...formStates, [e.target.name]: e.target.value });
   };
 
   const userState = (e) => {
     e.preventDefault();
-    const userFetched = {
+    if (!formStates.name.trim()) return;
+    const userFetched = JSON.stringify({
       name: formStates.name,
-    };
-    dispatch(addUser(userFetched));
+    });
+    dispatch(addUSER(userFetched));
     setFormStates({ name: '' });
   };
   return (
