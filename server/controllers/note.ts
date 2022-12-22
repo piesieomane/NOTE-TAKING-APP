@@ -50,7 +50,6 @@ export const updateNote = async (req: any, res: any) => {
   const { id } = req.params;
   const { title, content } = req.body;
   const note = await db.Note.findOne({ where: { id: id } });
-  console.log(note);
   if (note) {
     note.title = title;
     note.content = content;
