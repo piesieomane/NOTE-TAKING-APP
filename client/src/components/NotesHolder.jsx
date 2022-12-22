@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Notes from './Notes';
-import './NotesHolderStyles.css';
+import '../css/NotesHolderStyles.css';
 import DisplayNotes from './DisplayNotes';
 
 const NotesHolder = () => {

@@ -14,7 +14,7 @@ export default (state = [], action) => {
       return state.filter((note) => note.id !== action.payload.id);
     case 'notes/UPDATE_NOTE/fulfilled':
       return state.map((note) =>
-        note.id === action.payload.id ? action.payload : note
+        note.id === action.payload.id ? action.payload.notes : note
       );
     case 'notes/GET_NOTES/fulfilled':
       return action.payload.notes;
@@ -37,9 +37,6 @@ export const addNOTE = createAsyncThunk(ADD_NOTE, async (note) => {
         'Content-Type': 'application/json',
       },
     });
-    // if (!res.ok) {
-    //   throw new Error('Something went wrong');
-    // }
     return {
       notes: res.data,
     };
@@ -57,12 +54,33 @@ export const deleteNOTE = createAsyncThunk(DELETE_NOTE, async (id) => {
   };
 });
 
-export const updateNOTE = createAsyncThunk(UPDATE_NOTE, async (note) => {
-  const res = await axios.put(
-    `http://localhost:3000/api/notes/${note.id}`,
-    note
-  );
-  return {
-    notes: res.data,
-  };
+export const updateNOTE = createAsyncThunk(UPDATE_NOTE, async (id, note) => {
+  try {
+    const res = await axios.put(`http://localhost:3000/api/notes/70`, note, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    return {
+      notes: res.data,
+      id: id,
+    };
+  } catch (error) {
+    const errorMessage = error.response.data.message;
+    console.log(errorMessage);
+    return;
+  }
+  //use fetch instead of axios
+  // const res = await fetch(`http://localhost:3000/api/notes/${id}`, {
+  //   method: 'PUT',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //   },
+  //   body: JSON.stringify(note),
+  // });
+  // const data = await res.json();
+  // return {
+  //   notes: data,
+  //   id: id,
+  // };
 });

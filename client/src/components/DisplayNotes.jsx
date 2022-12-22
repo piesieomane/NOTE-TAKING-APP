@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { deleteNOTE } from '../redux/notes/notes';
 
 const DisplayNotes = (props) => {
@@ -18,7 +19,9 @@ const DisplayNotes = (props) => {
         <p>{updatedAt}</p>
       </div>
       <div className="btn_control">
-        <button type="button">Edit</button>
+        <Link to={`/notes/${id}`}>
+          <button type="button">Edit</button>
+        </Link>
         <button type="button" onClick={removeNoteFromList}>
           Delete
         </button>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addUSER } from '../redux/users/users';
 
-import './WelcomeStyles.css';
+import '../css/WelcomeStyles.css';
 
 const Welcome = () => {
   const dispatch = useDispatch();

@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addNOTE } from '../redux/notes/notes';
-import '../css/NotesStyles.css';
+import { Link, useParams } from 'react-router-dom';
+import { updateNOTE } from '../redux/notes/notes';
+import '../css/EditNotesStyles.css';
 
-const Notes = () => {
+const EditNotes = () => {
   const dispatch = useDispatch();
+  const { id } = useParams();
 
   const [formStates, setFormStates] = useState({ title: '', content: '' });
-  const [error, setError] = useState(null);
 
   const changeState = (e) => {
     e.preventDefault();
@@ -21,11 +22,14 @@ const Notes = () => {
       title: formStates.title,
       content: formStates.content,
     };
-    dispatch(addNOTE(noteFetched));
+    console.log(id, noteFetched);
+    dispatch(updateNOTE(id, noteFetched));
     setFormStates({ title: '', content: '' });
   };
+
   return (
-    <div className="addNote">
+    <div className="editNote">
+      <h1>EDIT NOTES</h1>
       <form onSubmit={noteState}>
         <input
           type="text"
@@ -41,10 +45,13 @@ const Notes = () => {
           value={formStates.content}
           placeholder="Content...."
         />
-        <button type="submit"> ADD NOTE</button>
+        <button type="submit"> EDIT NOTE</button>
       </form>
+      {/* <link to="/notes">
+        <button type="submit"> CANCEL EDIT</button>
+      </link> */}
     </div>
   );
 };
 
-export default Notes;
+export default EditNotes;

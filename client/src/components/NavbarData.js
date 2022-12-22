@@ -12,8 +12,8 @@ const LINKS = [
     cName: 'nav-links',
   },
   {
-    to: '/users',
-    text: 'USERS',
+    to: '/add',
+    text: 'ADD-NOTE',
     icon: 'fa-solid fa-briefcase',
     cName: 'nav-links',
   },
