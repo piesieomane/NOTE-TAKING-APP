@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addNOTE } from '../redux/notes/notes';
 import './NotesStyles.css';
@@ -7,6 +7,7 @@ const Notes = () => {
   const dispatch = useDispatch();
 
   const [formStates, setFormStates] = useState({ title: '', content: '' });
+  const [error, setError] = useState(null);
 
   const changeState = (e) => {
     e.preventDefault();
@@ -21,11 +22,10 @@ const Notes = () => {
       content: formStates.content,
     };
     dispatch(addNOTE(noteFetched));
-    console.log(formStates.title, formStates.content, noteFetched);
     setFormStates({ title: '', content: '' });
   };
   return (
-    <div className="note">
+    <div className="addNote">
       <form onSubmit={noteState}>
         <input
           type="text"

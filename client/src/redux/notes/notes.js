@@ -31,14 +31,23 @@ export const fetchNOTES = createAsyncThunk(GET_NOTES, async () => {
 });
 
 export const addNOTE = createAsyncThunk(ADD_NOTE, async (note) => {
-  const res = await axios.post('http://localhost:3000/api/notes/', note, {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-  return {
-    notes: res.data,
-  };
+  try {
+    const res = await axios.post('http://localhost:3000/api/notes/', note, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    // if (!res.ok) {
+    //   throw new Error('Something went wrong');
+    // }
+    return {
+      notes: res.data,
+    };
+  } catch (error) {
+    const errorMessage = error.response.data.message;
+    console.log(errorMessage);
+    return;
+  }
 });
 
 export const deleteNOTE = createAsyncThunk(DELETE_NOTE, async (id) => {
