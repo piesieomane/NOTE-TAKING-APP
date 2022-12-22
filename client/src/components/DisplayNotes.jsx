@@ -7,6 +7,9 @@ const DisplayNotes = (props) => {
   const dispatch = useDispatch();
   const { title, content, createdAt, updatedAt, id } = props;
 
+  const createdAtDate = new Date(createdAt);
+  const updatedAtDate = new Date(updatedAt);
+
   const removeNoteFromList = () => {
     dispatch(deleteNOTE(id));
   };
@@ -15,8 +18,14 @@ const DisplayNotes = (props) => {
       <div>
         <h1>{title}</h1>
         <p>{content}</p>
-        <p>{createdAt}</p>
-        <p>{updatedAt}</p>
+        <p>
+          Created At :
+          {`${createdAtDate.toDateString()}, ${createdAtDate.toLocaleTimeString()}`}
+        </p>
+        <p>
+          Updated At :
+          {`${updatedAtDate.toDateString()}, ${updatedAtDate.toLocaleTimeString()} `}
+        </p>
       </div>
       <div className="btn_control">
         <Link to={`/notes/${id}`}>
