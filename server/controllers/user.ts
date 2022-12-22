@@ -1,12 +1,26 @@
 import db from '../database/models';
+import jwt from 'jsonwebtoken';
 
-//create a User
+//create a User // sql UPSERT
 export const createUser = async (req: any, res: any) => {
   const { name } = req.body;
-  const user = await db.User.create({
-    name,
-  });
-  res.json(user);
+  // find user by name, if the user exists, use that user's id to create a jwt token
+  const User = await db.User.findOne({ where: { name: name } });
+  if (User) {
+    // create a jwt token
+    const token = jwt.sign({ userId: User.id }, 'secretKey');
+    res.json({ User, token });
+  } else {
+    const user = await db.User.create({
+      name,
+    });
+    const token = jwt.sign({ userId: user.id }, 'shhh');
+    res.json({ user, token });
+  }
+  // else create a new user using the name from the request body and then use the created user's id to
+  // create a jwt token eg: jwt.sign({userId: <actual_value>}, secretKey)
+
+  // CLIENT SIDE: look into adding jwt token in authorization header on the client side
 };
 
 //get all Users

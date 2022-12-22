@@ -19,6 +19,8 @@ const connectDB = async () => {
   }
 };
 
+// connectDB();
+
 //add midlleWares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
