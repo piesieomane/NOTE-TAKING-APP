@@ -5,8 +5,7 @@ import '../css/NotesHolderStyles.css';
 import DisplayNotes from './DisplayNotes';
 
 const NotesHolder = () => {
-  const notes = useSelector((state) => state.notes);
-
+  const notes = useSelector((state) => state.notes.notes);
   return (
     <div className="notes">
       <Notes />

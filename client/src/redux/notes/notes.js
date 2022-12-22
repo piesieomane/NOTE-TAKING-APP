@@ -6,18 +6,38 @@ const DELETE_NOTE = 'notes/DELETE_NOTE';
 const UPDATE_NOTE = 'notes/UPDATE_NOTE';
 const GET_NOTES = 'notes/GET_NOTES';
 
-export default (state = [], action) => {
+export default (state = { notes: [], errorMessage: null }, action) => {
   switch (action.type) {
     case 'notes/ADD_NOTE/fulfilled':
-      return [...state, action.payload.notes];
+      const errorMessage = action.payload.errorMessage || null;
+      console.log({ payload: action.payload });
+      return {
+        ...state,
+        notes: !errorMessage
+          ? [...state.notes, action.payload.notes]
+          : [...state.notes],
+        errorMessage,
+      };
     case 'notes/DELETE_NOTE/fulfilled':
-      return state.filter((note) => note.id !== action.payload.id);
+      return {
+        ...state,
+        notes: state.notes.filter((note) => note.id !== action.payload.id),
+        errorMessage: action.payload.errorMessage || null,
+      };
     case 'notes/UPDATE_NOTE/fulfilled':
-      return state.map((note) =>
-        note.id === action.payload.id ? action.payload.notes : note
-      );
+      return {
+        ...state,
+        notes: state.notes.map((note) =>
+          note.id === action.payload.id ? action.payload.notes : note
+        ),
+        errorMessage: action.payload.errorMessage || null,
+      };
     case 'notes/GET_NOTES/fulfilled':
-      return action.payload.notes;
+      return {
+        ...state,
+        notes: action.payload.notes,
+        errorMessage: action.payload.errorMessage || null,
+      };
     default:
       return state;
   }
@@ -43,7 +63,9 @@ export const addNOTE = createAsyncThunk(ADD_NOTE, async (note) => {
   } catch (error) {
     const errorMessage = error.response.data.message;
     console.log(errorMessage);
-    return;
+    return {
+      errorMessage,
+    };
   }
 });
 
@@ -54,21 +76,27 @@ export const deleteNOTE = createAsyncThunk(DELETE_NOTE, async (id) => {
   };
 });
 
-export const updateNOTE = createAsyncThunk(UPDATE_NOTE, async (id, note) => {
+export const updateNOTE = createAsyncThunk(UPDATE_NOTE, async (payload) => {
+  console.log({ payload });
+  const { id, noteFetched } = payload;
   try {
-    const res = await axios.put(`http://localhost:3000/api/notes/70`, note, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    const res = await axios.put(
+      `http://localhost:3000/api/notes/${id}`,
+      noteFetched,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
     return {
       notes: res.data,
-      id: id,
+      id: parseInt(id),
     };
   } catch (error) {
     const errorMessage = error.response.data.message;
     console.log(errorMessage);
-    return;
+    return { errorMessage };
   }
   //use fetch instead of axios
   // const res = await fetch(`http://localhost:3000/api/notes/${id}`, {

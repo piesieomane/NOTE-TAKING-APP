@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { updateNOTE } from '../redux/notes/notes';
 import '../css/EditNotesStyles.css';
@@ -7,45 +7,57 @@ import '../css/EditNotesStyles.css';
 const EditNotes = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
+  const notes = useSelector((state) => state.notes.notes);
 
-  const [formStates, setFormStates] = useState({ title: '', content: '' });
+  const noteBeingEdited = notes.filter((note) => note.id === parseInt(id))[0];
+  console.log(noteBeingEdited);
 
-  const changeState = (e) => {
+  const [formStates, setFormStates] = useState({
+    title: noteBeingEdited.title,
+    content: noteBeingEdited.content,
+  });
+
+  const changeTitle = (e) => {
     e.preventDefault();
-    setFormStates({ ...formStates, [e.target.name]: e.target.value });
+    setFormStates({ ...formStates, title: e.target.value });
+    submitNote({ title: e.target.value, content: formStates.content });
   };
 
-  const noteState = (e) => {
+  const changeContent = (e) => {
     e.preventDefault();
+    setFormStates({ ...formStates, content: e.target.value });
+    submitNote({ content: e.target.value, title: formStates.title });
+  };
+
+  const submitNote = ({ title, content }) => {
     if (!formStates.title.trim() || !formStates.title.trim()) return;
     const noteFetched = {
       title: formStates.title,
       content: formStates.content,
     };
     console.log(id, noteFetched);
-    dispatch(updateNOTE(id, noteFetched));
-    setFormStates({ title: '', content: '' });
+    dispatch(updateNOTE({ id, noteFetched }));
   };
 
   return (
     <div className="editNote">
       <h1>EDIT NOTES</h1>
-      <form onSubmit={noteState}>
+      <form>
         <input
           type="text"
           name="title"
-          onChange={changeState}
+          onChange={changeTitle}
           value={formStates.title}
           placeholder="title...."
         />
         <input
           type="text"
           name="content"
-          onChange={changeState}
+          onChange={changeContent}
           value={formStates.content}
           placeholder="Content...."
         />
-        <button type="submit"> EDIT NOTE</button>
+        {/* <button type="submit"> EDIT NOTE</button> */}
       </form>
       {/* <link to="/notes">
         <button type="submit"> CANCEL EDIT</button>
