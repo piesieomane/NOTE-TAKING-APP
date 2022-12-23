@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { updateNOTE } from '../redux/notes/notes';
@@ -8,9 +8,10 @@ const EditNotes = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const notes = useSelector((state) => state.notes.notes);
+  const timeoutIdRef = useRef(null);
 
   const noteBeingEdited = notes.filter((note) => note.id === parseInt(id))[0];
-  console.log(noteBeingEdited);
+  // console.log(noteBeingEdited);
 
   const [formStates, setFormStates] = useState({
     title: noteBeingEdited.title,
@@ -30,13 +31,19 @@ const EditNotes = () => {
   };
 
   const submitNote = ({ title, content }) => {
-    if (!formStates.title.trim() || !formStates.title.trim()) return;
-    const noteFetched = {
-      title: formStates.title,
-      content: formStates.content,
-    };
-    console.log(id, noteFetched);
-    dispatch(updateNOTE({ id, noteFetched }));
+    if (!title.trim() || !title.trim()) return;
+    const noteFetched = { title, content };
+    // console.log(id, noteFetched);
+    david;
+
+    if (timeoutIdRef.current) clearTimeout(timeoutIdRef.current);
+
+    // debounce this operation and only issue the rquest to the serer after 500 miliseconds of inactivity from the keyboard
+    // that way we dont have to issue a bunch of requests to the server as the user types.
+    const timeoutId = setTimeout(() => {
+      dispatch(updateNOTE({ id, noteFetched }));
+    }, 500);
+    timeoutIdRef.current = timeoutId;
   };
 
   return (

@@ -77,22 +77,14 @@ export const deleteNOTE = createAsyncThunk(DELETE_NOTE, async (id) => {
 });
 
 export const updateNOTE = createAsyncThunk(UPDATE_NOTE, async (payload) => {
-  console.log({ payload });
   const { id, noteFetched } = payload;
+
   try {
     const res = await axios.put(
       `http://localhost:3000/api/notes/${id}`,
-      noteFetched,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
+      noteFetched
     );
-    return {
-      notes: res.data,
-      id: parseInt(id),
-    };
+    return { notes: res.data, id: parseInt(id) };
   } catch (error) {
     const errorMessage = error.response.data.message;
     console.log(errorMessage);
