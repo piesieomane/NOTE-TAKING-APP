@@ -34,7 +34,6 @@ const EditNotes = () => {
     if (!title.trim() || !title.trim()) return;
     const noteFetched = { title, content };
     // console.log(id, noteFetched);
-    david;
 
     if (timeoutIdRef.current) clearTimeout(timeoutIdRef.current);
 
