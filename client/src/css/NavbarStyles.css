@@ -73,6 +73,13 @@
   font-weight: 500;
 }
 
+.home-link {
+  text-decoration: none;
+  color: #fff;
+  padding: 0.7rem 1rem;
+  white-space: nowrap;
+}
+
 @media screen and (max-width: 850px) {
   .NavbarItems {
     z-index: 99;

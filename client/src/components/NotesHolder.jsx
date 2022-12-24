@@ -10,7 +10,7 @@ const NotesHolder = () => {
     <div className="notes">
       <Notes />
       <div className="noteContainer">
-        <div className="mission_table">
+        <div className="notes_table">
           {' '}
           <table className="styled-table">
             <thead>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { addUSER } from '../redux/users/users';
 
 import '../css/WelcomeStyles.css';
@@ -31,8 +32,18 @@ const Welcome = () => {
           Note is a simple note taking app that allows you to create, edit, and
           delete notes.
         </p>
-        <p>As a new USER you need to add yourself</p>
-        <form onSubmit={userState}>
+        <p className="home-text">As a new USER you need to add yourself</p>
+        <p className="home-text">
+          Or just move straight to adding a Note{' '}
+          <button className="home-btn">
+            <Link to="/notes" className="btn-note">
+              Add Note
+            </Link>
+          </button>
+        </p>
+        <p className="home-text">Please enter your name</p>
+
+        <form onSubmit={userState} className="welcome-form">
           <input
             type="text"
             name="name"

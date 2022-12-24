@@ -6,18 +6,11 @@ const LINKS = [
     cName: 'nav-links',
   },
   {
-    to: '/about',
-    text: 'ABOUT',
-    icon: 'fa-solid fa-circle-info',
-    cName: 'nav-links',
-  },
-  {
     to: '/notes',
     text: 'NOTES',
     icon: 'fa-solid fa-address-book',
     cName: 'nav-links',
   },
-  { to: '/signup', text: 'SIGN UP', cName: 'nav-links-mobile' },
 ];
 
 export default LINKS;

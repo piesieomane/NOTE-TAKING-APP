@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import LINKS from './NavbarData';
 import '../css/NavbarStyles.css';
 
@@ -11,9 +11,11 @@ const Navbar = () => {
 
   return (
     <nav className="NavbarItems">
-      <h1 className="logo">
-        Note <i className="fa fa-sticky-note"></i>
-      </h1>
+      <Link to="/notes" className="home-link">
+        <h1 className="logo">
+          Note <i className="fa fa-sticky-note"></i>
+        </h1>
+      </Link>
       <div className="menu-icons">
         <i
           className={isActive ? 'fas fa-times' : 'fas fa-bars'}

@@ -5,14 +5,15 @@
 
 .noteContainer {
   display: grid;
-  background-color: blanchedalmond;
   margin-top: 20px;
+  padding: 3%;
 }
 
-.mission_table {
+.notes_table {
   display: grid;
   width: 100%;
   border-collapse: collapse;
+  background-color: beige;
   border-spacing: 0;
   border: 1px solid #ddd;
 }
@@ -88,26 +89,28 @@
 
 .delete-btn {
   background-color: #f44336;
+  height: 35px;
   border: none;
   color: white;
-  padding: 5px 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 14px;
   margin: 4px 2px;
   cursor: pointer;
+  border-radius: 20px;
 }
 
 .edit-btn {
   background-color: #4caf50;
+  height: 35px;
   border: none;
   color: white;
-  padding: 5px 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 14px;
   margin: 4px 2px;
   cursor: pointer;
+  border-radius: 20px;
 }
