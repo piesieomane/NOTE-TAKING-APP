@@ -10,16 +10,30 @@ const NotesHolder = () => {
     <div className="notes">
       <Notes />
       <div className="noteContainer">
-        {notes.map((note) => (
-          <DisplayNotes
-            key={note.id}
-            id={note.id}
-            title={note.title}
-            content={note.content}
-            createdAt={note.createdAt}
-            updatedAt={note.updatedAt}
-          />
-        ))}
+        <div className="mission_table">
+          {' '}
+          <table className="styled-table">
+            <thead>
+              <tr>
+                <th>Notes</th>
+                <th>Description</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {notes.map((note) => (
+                <DisplayNotes
+                  key={note.id}
+                  id={note.id}
+                  title={note.title}
+                  content={note.content}
+                  createdAt={note.createdAt}
+                  updatedAt={note.updatedAt}
+                />
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
