@@ -8,8 +8,8 @@
   background: rgb(222, 66, 66);
   background: linear-gradient(
     90deg,
-    rgba(222, 66, 66, 1) 0%,
-    rgba(212, 32, 32, 1) 94%
+    rgb(226, 118, 118) 0%,
+    rgb(107, 40, 40) 94%
   );
 }
 

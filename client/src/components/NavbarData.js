@@ -12,12 +12,6 @@ const LINKS = [
     cName: 'nav-links',
   },
   {
-    to: '/add',
-    text: 'ADD-NOTE',
-    icon: 'fa-solid fa-briefcase',
-    cName: 'nav-links',
-  },
-  {
     to: '/notes',
     text: 'NOTES',
     icon: 'fa-solid fa-address-book',

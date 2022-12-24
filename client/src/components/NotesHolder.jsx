@@ -9,16 +9,18 @@ const NotesHolder = () => {
   return (
     <div className="notes">
       <Notes />
-      {notes.map((note) => (
-        <DisplayNotes
-          key={note.id}
-          id={note.id}
-          title={note.title}
-          content={note.content}
-          createdAt={note.createdAt}
-          updatedAt={note.updatedAt}
-        />
-      ))}
+      <div className="noteContainer">
+        {notes.map((note) => (
+          <DisplayNotes
+            key={note.id}
+            id={note.id}
+            title={note.title}
+            content={note.content}
+            createdAt={note.createdAt}
+            updatedAt={note.updatedAt}
+          />
+        ))}
+      </div>
     </div>
   );
 };

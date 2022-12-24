@@ -14,7 +14,7 @@ const DisplayNotes = (props) => {
     dispatch(deleteNOTE(id));
   };
   return (
-    <div>
+    <div className="eachNote">
       <div>
         <h1>{title}</h1>
         <p>{content}</p>
@@ -29,9 +29,11 @@ const DisplayNotes = (props) => {
       </div>
       <div className="btn_control">
         <Link to={`/notes/${id}`}>
-          <button type="button">Edit</button>
+          <button type="button" className="btn">
+            Edit
+          </button>
         </Link>
-        <button type="button" onClick={removeNoteFromList}>
+        <button type="button" className="btn-red" onClick={removeNoteFromList}>
           Delete
         </button>
       </div>

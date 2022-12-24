@@ -46,28 +46,38 @@ const EditNotes = () => {
   };
 
   return (
-    <div className="editNote">
-      <h1>EDIT NOTES</h1>
-      <form>
-        <input
-          type="text"
-          name="title"
-          onChange={changeTitle}
-          value={formStates.title}
-          placeholder="title...."
-        />
-        <input
-          type="text"
-          name="content"
-          onChange={changeContent}
-          value={formStates.content}
-          placeholder="Content...."
-        />
-        {/* <button type="submit"> EDIT NOTE</button> */}
-      </form>
-      {/* <link to="/notes">
-        <button type="submit"> CANCEL EDIT</button>
-      </link> */}
+    <div className="container">
+      <div className="contact-box">
+        <div class="left"></div>
+        <div class="right">
+          <h2>EDIT NOTES</h2>
+          <form>
+            <input
+              type="text"
+              name="title"
+              class="field"
+              onChange={changeTitle}
+              value={formStates.title}
+              placeholder="title...."
+            />
+            <input
+              type="text"
+              name="content"
+              class="field"
+              onChange={changeContent}
+              value={formStates.content}
+              placeholder="Content...."
+            />
+            {/* <button type="submit"> EDIT NOTE</button> */}
+          </form>
+          <Link to="/notes">
+            <button type="submit" class="btn">
+              {' '}
+              GO TO NOTES
+            </button>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };
