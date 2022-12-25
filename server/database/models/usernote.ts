@@ -1,10 +1,11 @@
 'use strict';
 
-const { Model } = require('sequelize');
+import { Model } from 'sequelize';
 
 interface UserNoteAttributes {
-  NoteId: number;
-  UserId: number;
+  noteId: number;
+  userId: number;
+  id: number;
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
@@ -17,6 +18,13 @@ module.exports = (sequelize: any, DataTypes: any) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
+
+    public id!: number;
+    public noteId!: number;
+    public userId!: number;
+    public readonly createdAt!: Date;
+    public readonly updatedAt!: Date;
+
     static associate(models: any) {
       // define association here
     }
