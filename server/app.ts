@@ -1,9 +1,12 @@
 import express from 'express';
+import cors from 'cors';
 import noteRouter from './routes/note';
 import userRouter from './routes/user';
 import db from './database/models';
 
 const app = express();
+//allow CORS
+app.use(cors());
 const PORT = process.env.PORT || 3000;
 
 const connectDB = async () => {
@@ -15,6 +18,8 @@ const connectDB = async () => {
     throw new Error('Unable to connect to the database:');
   }
 };
+
+// connectDB();
 
 //add midlleWares
 app.use(express.json());
