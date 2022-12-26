@@ -4,7 +4,9 @@ Note-Taking App
 
 # Description the project.
 
-This is a simple CRUD app that allows users to create, read, update and delete notes. The app is built with React, Node, Express and MySql.
+This is a simple CRUD app that allows users to create, read, update and delete notes. The app is built with React, Node, Express and postgreSql.
+
+> The Note Application is a a React, Redux application based on the [Note API](https://www.notion.so/Note-Taking-API-service-c14a96705ed84b3ead02071ed410d6ce) built on the server.
 
 ## Built With
 
@@ -50,13 +52,17 @@ $ git clone { https://github.com/piesieomane/NOTE-TAKING-APP.git }
 
 ### Usage
 
-> open your directory math-magician/
-
 \_use vs-code or any IDE to view line code .
+
+> open your directory note-taking-app/client
 
 ---
 
-$ npm start to run the local server
+$npm start to run the client dev server
+
+> open your directory note-taking-app/server
+
+$npm start to run the server dev server
 
 ---
 

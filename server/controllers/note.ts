@@ -20,16 +20,6 @@ export const getNote = async (req: any, res: any) => {
 //Users can create a new note
 export const createNote = async (req: any, res: any) => {
   const { title, content } = req.body;
-  // const token = req.headers.authorization;
-  // const decoded =  jwt.verify(token, secretKey)
-  // then create the Note, and then create a UserNote where noteId = this newly created note, and userId is the
-  // id u get from decrypting the jwt token
-
-  // const note = await db.Note.create({
-  //   title,
-  //   content,
-  // });
-  // res.json(note);
   // first check if the title is found in the database
   const note = await db.Note.findOne({ where: { title: title } });
   if (note) {
