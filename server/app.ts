@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 
 const connectDB = async () => {
   try {
-    await db.authenticate();
+    await db.sequelize.authenticate();
     console.log('Connection has been established successfully.');
   } catch (error) {
     console.error('Unable to connect to the database:', error);
@@ -19,7 +19,7 @@ const connectDB = async () => {
   }
 };
 
-// connectDB();
+connectDB();
 
 //add midlleWares
 app.use(express.json());
