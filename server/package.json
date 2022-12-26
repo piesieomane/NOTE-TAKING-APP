@@ -6,6 +6,8 @@
   "scripts": {
     "test": "tsc --init",
     "dev": "tsnd --respawn app.ts",
+    "build": "rm -rf build && tsc -p .",
+    "start": "npm run db:migrate && node build/app.js",
     "db:migrate": "sequelize-cli db:migrate",
     "db:migrate:undo": "sequelize-cli db:migrate:undo",
     "db:migrate:undo:all": "sequelize-cli db:migrate:undo:all"
