@@ -6,6 +6,8 @@ const DELETE_USER = 'users/DELETE_USER';
 const UPDATE_USER = 'users/UPDATE_USER';
 const GET_USERS = 'users/GET_USERS';
 
+const api = import.meta.env.VITE_API_URL;
+
 export default (state = [], action) => {
   switch (action.type) {
     case 'users/ADD_USER/fulfilled':
@@ -24,14 +26,14 @@ export default (state = [], action) => {
 };
 
 export const fetchUSERS = createAsyncThunk(GET_USERS, async () => {
-  const res = await axios.get('http://localhost:3000/api/users/');
+  const res = await axios.get(`${api}/api/users/`);
   return {
     users: res.data,
   };
 });
 
 export const addUSER = createAsyncThunk(ADD_USER, async (user) => {
-  const res = await axios.post('http://localhost:3000/api/users/', user, {
+  const res = await axios.post(`${api}/api/users/`, user, {
     headers: {
       'Content-Type': 'application/json',
     },
@@ -42,17 +44,14 @@ export const addUSER = createAsyncThunk(ADD_USER, async (user) => {
 });
 
 export const deleteUSER = createAsyncThunk(DELETE_USER, async (id) => {
-  await axios.delete(`http://localhost:3000/api/users/${id}`);
+  await axios.delete(`${api}/api/users/${id}`);
   return {
     id,
   };
 });
 
 export const updateUSER = createAsyncThunk(UPDATE_USER, async (user) => {
-  const res = await axios.put(
-    `http://localhost:3000/api/users/${user.id}`,
-    user
-  );
+  const res = await axios.put(`${api}/api/users/${user.id}`, user);
   return {
     users: res.data,
   };
