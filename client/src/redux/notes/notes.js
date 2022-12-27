@@ -10,6 +10,8 @@ const api = import.meta.env.prod
   ? 'http://note-taking-app-production-5c38.up.railway.app'
   : 'http://localhost:3000';
 
+console.log(import.meta.env.prod);
+
 export default (state = { notes: [], errorMessage: null }, action) => {
   switch (action.type) {
     case 'notes/ADD_NOTE/fulfilled':

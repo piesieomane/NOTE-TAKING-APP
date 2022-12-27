@@ -26,6 +26,8 @@ const Notes = () => {
     setFormStates({ title: '', content: '' });
   };
 
+  console.log('prod', import.meta.env.prod);
+
   return (
     <div className="addNote">
       <div>{errorMessage}</div>
