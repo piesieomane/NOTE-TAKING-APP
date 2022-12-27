@@ -14,7 +14,6 @@ export default (state = { notes: [], errorMessage: null }, action) => {
   switch (action.type) {
     case 'notes/ADD_NOTE/fulfilled':
       const errorMessage = action.payload.errorMessage || null;
-      console.log({ payload: action.payload });
       return {
         ...state,
         notes: !errorMessage

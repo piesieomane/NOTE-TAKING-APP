@@ -17,7 +17,7 @@ const Notes = () => {
 
   const noteState = (e) => {
     e.preventDefault();
-    if (!formStates.title.trim() || !formStates.title.trim()) return;
+    if (!formStates.title.trim() || !formStates.content.trim()) return;
     const noteFetched = {
       title: formStates.title,
       content: formStates.content,

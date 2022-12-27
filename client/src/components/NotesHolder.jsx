@@ -15,8 +15,10 @@ const NotesHolder = () => {
           <table className="styled-table">
             <thead>
               <tr>
-                <th>Notes</th>
+                <th>Title</th>
                 <th>Description</th>
+                <th>Created At</th>
+                <th>Updated At</th>
                 <th>Actions</th>
               </tr>
             </thead>

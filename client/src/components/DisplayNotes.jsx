@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -19,17 +20,13 @@ const DisplayNotes = (props) => {
         <h5>{title}</h5>
       </td>
       <td>
-        <div className="timeStamp">
-          <p className="timeStamp-Created-At">
-            Created At :
-            {`${createdAtDate.toDateString()}, ${createdAtDate.toLocaleTimeString()}`}
-          </p>
-          <p className="timeStamp-Updated-At">
-            Updated At :
-            {`${updatedAtDate.toDateString()}, ${updatedAtDate.toLocaleTimeString()} `}
-          </p>
-        </div>
         <p>{content}</p>
+      </td>
+      <td>
+        <p>{`${createdAtDate.toDateString()}, ${createdAtDate.toLocaleTimeString()}`}</p>
+      </td>
+      <td>
+        <p>{`${updatedAtDate.toDateString()}, ${updatedAtDate.toLocaleTimeString()} `}</p>
       </td>
       <td>
         <div className="btn-Control">

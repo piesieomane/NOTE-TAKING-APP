@@ -2,8 +2,6 @@ import db from '../database/models';
 
 //Users can see a list of all notes created on the application
 export const getNotes = async (req: any, res: any) => {
-  console.log('NOTE', db.Note);
-  console.log('db', db);
   const notes = await db.Note.findAll();
   res.json(notes);
 };
