@@ -48,14 +48,14 @@ const EditNotes = () => {
   return (
     <div className="container">
       <div className="contact-box">
-        <div class="left"></div>
-        <div class="right">
+        <div className="left"></div>
+        <div className="right">
           <h2>EDIT NOTES</h2>
           <form>
             <input
               type="text"
               name="title"
-              class="field"
+              className="field"
               onChange={changeTitle}
               value={formStates.title}
               placeholder="title...."
@@ -63,7 +63,7 @@ const EditNotes = () => {
             <input
               type="text"
               name="content"
-              class="field"
+              className="field"
               onChange={changeContent}
               value={formStates.content}
               placeholder="Content...."
@@ -71,7 +71,7 @@ const EditNotes = () => {
             {/* <button type="submit"> EDIT NOTE</button> */}
           </form>
           <Link to="/notes">
-            <button type="submit" class="btn">
+            <button type="submit" className="btn">
               {' '}
               GO TO NOTES
             </button>

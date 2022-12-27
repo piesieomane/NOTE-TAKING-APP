@@ -25,6 +25,7 @@ const Notes = () => {
     dispatch(addNOTE(noteFetched));
     setFormStates({ title: '', content: '' });
   };
+
   return (
     <div className="addNote">
       <div>{errorMessage}</div>

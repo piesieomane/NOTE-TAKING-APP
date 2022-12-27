@@ -6,6 +6,10 @@ const DELETE_NOTE = 'notes/DELETE_NOTE';
 const UPDATE_NOTE = 'notes/UPDATE_NOTE';
 const GET_NOTES = 'notes/GET_NOTES';
 
+const api = import.meta.env.prod
+  ? 'http://note-taking-app-production-5c38.up.railway.app'
+  : 'http://localhost:3000';
+
 export default (state = { notes: [], errorMessage: null }, action) => {
   switch (action.type) {
     case 'notes/ADD_NOTE/fulfilled':
@@ -44,7 +48,7 @@ export default (state = { notes: [], errorMessage: null }, action) => {
 };
 
 export const fetchNOTES = createAsyncThunk(GET_NOTES, async () => {
-  const res = await axios.get('http://localhost:3000/api/notes/');
+  const res = await axios.get(`${api}/api/notes/`);
   return {
     notes: res.data,
   };
@@ -52,7 +56,7 @@ export const fetchNOTES = createAsyncThunk(GET_NOTES, async () => {
 
 export const addNOTE = createAsyncThunk(ADD_NOTE, async (note) => {
   try {
-    const res = await axios.post('http://localhost:3000/api/notes/', note, {
+    const res = await axios.post(`${api}/api/notes/`, note, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -70,7 +74,7 @@ export const addNOTE = createAsyncThunk(ADD_NOTE, async (note) => {
 });
 
 export const deleteNOTE = createAsyncThunk(DELETE_NOTE, async (id) => {
-  await axios.delete(`http://localhost:3000/api/notes/${id}`);
+  await axios.delete(`${api}/api/notes/${id}`);
   return {
     id,
   };
@@ -80,27 +84,11 @@ export const updateNOTE = createAsyncThunk(UPDATE_NOTE, async (payload) => {
   const { id, noteFetched } = payload;
 
   try {
-    const res = await axios.put(
-      `http://localhost:3000/api/notes/${id}`,
-      noteFetched
-    );
+    const res = await axios.put(`${api}/api/notes/${id}`, noteFetched);
     return { notes: res.data, id: parseInt(id) };
   } catch (error) {
     const errorMessage = error.response.data.message;
     console.log(errorMessage);
     return { errorMessage };
   }
-  //use fetch instead of axios
-  // const res = await fetch(`http://localhost:3000/api/notes/${id}`, {
-  //   method: 'PUT',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //   },
-  //   body: JSON.stringify(note),
-  // });
-  // const data = await res.json();
-  // return {
-  //   notes: data,
-  //   id: id,
-  // };
 });
