@@ -6,11 +6,9 @@ const DELETE_NOTE = 'notes/DELETE_NOTE';
 const UPDATE_NOTE = 'notes/UPDATE_NOTE';
 const GET_NOTES = 'notes/GET_NOTES';
 
-const api = import.meta.env.VITE_API_URL
-  ? 'http://note-taking-app-production-5c38.up.railway.app'
-  : 'http://localhost:3000';
+const api = import.meta.env.VITE_API_URL;
 
-console.log(import.meta.env);
+// console.log(import.meta.env);
 
 export default (state = { notes: [], errorMessage: null }, action) => {
   switch (action.type) {
