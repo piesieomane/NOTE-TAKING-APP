@@ -6,7 +6,11 @@ import db from './database/models';
 
 const app = express();
 //allow CORS
-app.use(cors());
+app.use(
+  cors({
+    origin: '*',
+  })
+);
 const PORT = process.env.PORT || 3000;
 
 const connectDB = async () => {
