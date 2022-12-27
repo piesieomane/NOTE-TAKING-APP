@@ -27,7 +27,7 @@ This is a simple CRUD app that allows users to create, read, update and delete n
 
 ## Click here for live version
 
-### live demo: [Live](https://github.com/piesieomane/NOTE-TAKING-APP.git)
+### live demo: [Live](https://note-taking-app-ruby.vercel.app/)
 
 To get a local copy up and running follow these simple example steps.
 follow>>>>>>>>>
