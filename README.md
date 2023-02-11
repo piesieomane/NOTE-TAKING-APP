@@ -1,6 +1,6 @@
 # Project Name
 
-Note-Taking App
+Note-Taking App with react & Express
 
 # Description the project.
 
