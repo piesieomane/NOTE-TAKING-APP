@@ -4,7 +4,7 @@ Note-Taking App with react/redux & Express....
 
 # Description the project.
 
-This is a simple CRUD app that allows users to create, read, update and delete notes. The app is built with React, Node, Express and postgreSql.
+This is a simple CRUD app that allows users to create, read, update and delete notes. The app is built with React, Node.Js, Express and postgreSql.
 
 > The Note Application is a a React, Redux application based on the [Note API](https://www.notion.so/Note-Taking-API-service-c14a96705ed84b3ead02071ed410d6ce) built on the server.
 
